@@ -1,0 +1,17 @@
+2025-11-07 20:23:38	=== Roar Optimizations starting ===
+2025-11-07 20:23:38	Using RecentPath=C:\Users\RoarStaze\AppData\Roaming\Microsoft\Windows\Recent
+2025-11-07 20:23:38	Using UserTempPath=C:\Users\RoarStaze\AppData\Local\Temp
+2025-11-07 20:23:38	LiveFeedPath=C:\Users\RoarStaze\Documents\GitHub\RoarOptimizations\Assets\video.mp4 (Exists: True)
+2025-11-07 20:23:38	Live feed started.
+2025-11-07 20:23:38	Matrix initialized for 972x632, fontSize=11, cols=108.
+2025-11-07 20:23:38	Loaded handler completed.
+2025-11-07 20:23:39	Matrix initialized for 972.382245714286x632.382245714286, fontSize=11, cols=109.
+2025-11-07 20:23:49	Matrix initialized for 2566.41602785714x1086.41602785714, fontSize=16, cols=180.
+2025-11-07 20:23:49	Matrix initialized for 2567.68970528571x1087.68970528571, fontSize=16, cols=180.
+2025-11-07 20:23:51	Matrix initialized for 968.380323285714x628.380323285714, fontSize=11, cols=108.
+2025-11-07 20:23:51	Matrix initialized for 969.333654714286x629.333654714286, fontSize=11, cols=108.
+2025-11-07 20:24:21	Matrix initialized for 2563.95034885714x1083.95034885714, fontSize=16, cols=180.
+2025-11-07 20:24:22	Matrix initialized for 2562.71232128571x1082.71232128571, fontSize=16, cols=180.
+2025-11-07 20:24:39	Matrix initialized for 969.289275714286x629.289275714286, fontSize=11, cols=108.
+2025-11-07 20:24:39	Matrix initialized for 970.384438571429x630.384438571429, fontSize=11, cols=108.
+2025-11-07 20:24:57	Window closed cleanly.
