@@ -14,7 +14,9 @@ Run start.bat to open the PowerShell GUI.
 
 &nbsp;  
 
-&nbsp;   Disable Telemetry - Attempts to reduce some windows telemetry by stopping known telemetry services and adding host blocks.
+&nbsp;   Disable Telemetry - Attempts to reduce some windows telemetry by stopping known telemetry services and 
+
+&nbsp;                       adding host blocks.
 
 
 
