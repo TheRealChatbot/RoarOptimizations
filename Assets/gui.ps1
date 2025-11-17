@@ -585,7 +585,7 @@ $xaml = @"
                            FontSize="11"
                            Margin="0,0,0,8"/>
 
-                <UniformGrid Columns="1" Rows="4" Margin="0,4,0,0">
+                <UniformGrid Columns="1" Rows="5" Margin="0,4,0,0">
                   <Button x:Name="TempBtn"
                           Style="{StaticResource MatrixButton}"
                           ToolTip="Clean Recent, Temp, Prefetch and related clutter to free space and reduce drag.">
@@ -608,6 +608,12 @@ $xaml = @"
                           Style="{StaticResource MatrixButton}"
                           ToolTip="Flush DNS/ARP and reset Winsock for a clean network stack.">
                     <TextBlock Text="[ NET REFRESH ]" HorizontalAlignment="Center"/>
+                  </Button>
+
+                  <Button x:Name="PowerBtn"
+                          Style="{StaticResource MatrixButton}"
+                          ToolTip="Create and activate a high performance power plan.">
+                    <TextBlock Text="[ HIGH PERFORMANCE PLAN ]" HorizontalAlignment="Center"/>
                   </Button>
                 </UniformGrid>
               </StackPanel>
@@ -784,6 +790,7 @@ $TempBtn      = Get-Control 'TempBtn'
 $TelemetryBtn = Get-Control 'TelemetryBtn'
 $ShaderBtn    = Get-Control 'ShaderBtn'
 $NetBtn       = Get-Control 'NetBtn'
+$PowerBtn     = Get-Control 'PowerBtn'
 $LogBox       = Get-Control 'LogBox'
 $LogScroll    = Get-Control 'LogScroll'
 $StatusText   = Get-Control 'StatusText'
@@ -1565,6 +1572,36 @@ if ($NetBtn) {
         } catch {
             Append-Log "Net Refresh failed: $($_.Exception.Message)" 'ERR'
             Set-Status "Net Refresh failed." $false
+        }
+    })
+}
+
+if ($PowerBtn) {
+    $PowerBtn.Add_Click({
+        try {
+            Append-Log "Creating and activating high performance power plan."
+
+            # Duplicate the High Performance scheme (GUID: 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c)
+            $output = powercfg -duplicatescheme 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c
+
+            # Parse the new GUID from output
+            if ($output -match "Power Scheme GUID: (\w{8}-\w{4}-\w{4}-\w{4}-\w{12})") {
+                $newGuid = $matches[1]
+
+                Append-Log "New plan GUID: $newGuid" 'OK'
+
+                # Set the new plan as active
+                powercfg -setactive $newGuid
+
+                Append-Log "High performance plan activated." 'OK'
+                Set-Status "High performance plan created and activated." $true
+            } else {
+                Append-Log "Failed to parse new GUID from powercfg output." 'ERR'
+                Set-Status "Power plan creation failed." $false
+            }
+        } catch {
+            Append-Log "Power plan action failed: $($_.Exception.Message)" 'ERR'
+            Set-Status "Power plan action failed." $false
         }
     })
 }
