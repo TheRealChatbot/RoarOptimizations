@@ -1,6 +1,5 @@
 name: Build Clean Release
 
-# Trigger this workflow when a release is published
 on:
   release:
     types: [published]
@@ -10,11 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repo
       - name: Check out the repo
         uses: actions/checkout@v4
 
-      # Step 2: Remove unwanted files
       - name: Remove unwanted files
         run: |
           rm -rf .git
@@ -22,11 +19,9 @@ jobs:
           rm -f .gitattributes
           rm -f .gitignore
 
-      # Step 3: Create the clean release ZIP
       - name: Create release zip
         run: zip -r RoarOptimizationsV1.2.zip .
 
-      # Step 4: Upload the ZIP to the GitHub release
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
         with:
